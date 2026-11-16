@@ -3,13 +3,12 @@
 #include <string.h>
 #include <ctype.h>
 
-#define BLOCK_SIZE 512  //One disk block
-#define NUM_BLOCKS 1024 //one virtual disk
-#define MAX_NAME 50  //a filename can not be exceeded 50 characters
-#define MAX_INPUT 4096 //max size of a command entered by the user
-#define MAX_PATH 4096 //max buffer size used while handling directory paths
+#define BLOCK_SIZE 512  
+#define NUM_BLOCKS 1024 
+#define MAX_NAME 50 
+#define MAX_INPUT 4096 
+#define MAX_PATH 4096 
 
-//structures
 
 typedef enum {
     FILE_TYPE,
@@ -17,9 +16,9 @@ typedef enum {
 }NodeType;
 
 typedef struct FileNode {
-    char name[MAX_NAME + 1]; //name of file or directory
-    NodeType type;  //tells whether it's a file or directory
-    struct FileNode *parent; //stores the address of the directory in which teh current node exist
+    char name[MAX_NAME + 1]; 
+    NodeType type; 
+    struct FileNode *parent; 
     struct FileNode *next;
     struct FileNode *prev;
     struct FileNode *children;
@@ -586,7 +585,7 @@ void processCommand(char *input){
         printf("Missing command argument.\n");
         return;
     }
-    
+
     if (strcmp(command, "mkdir") == 0) {
 
         char *name = strtok(args, " \t\r\n");
